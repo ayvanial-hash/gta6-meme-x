@@ -6,7 +6,8 @@ import { join } from 'node:path';
  */
 async function main() {
   try {
-    const filePath = 'meme.png';
+    const botDir = process.env.MAKEFUN_BOT_DIR || '/bot';
+    const filePath = join(botDir, 'meme.png');
     const buffer = await readFile(filePath);
 
     // Verify PNG Signature: 89 50 4E 47 0D 0A 1A 0A
