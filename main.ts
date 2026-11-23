@@ -32,6 +32,13 @@ async function main() {
     // Copy to output as entry.png
     await writeFile(join(outputDir, 'entry.png'), buffer);
     console.log(`Successfully validated and copied ${filePath} to ${outputDir}/entry.png`);
+
+    // Copy POST.json byte-for-byte to the output directory
+    const postJsonPath = join(botDir, 'POST.json');
+    const postJsonBuffer = await readFile(postJsonPath);
+    await writeFile(join(outputDir, 'POST.json'), postJsonBuffer);
+    console.log(`Successfully copied ${postJsonPath} to ${outputDir}/POST.json`);
+
     console.log('DONE');
   } catch (error) {
     throw new Error(`Validation failed: ${error instanceof Error ? error.message : error}`);
